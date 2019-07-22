@@ -1,0 +1,167 @@
+.module-form-row-m
+  top 0
+  left 0
+  right 0
+  position fixed
+  height 50px
+  width 100%
+  box-shadow: 0 1px 10px 0 rgba(0,0,0,.1);
+  z-index: 205;
+  background-color: #e6e6e6;
+  .form-item
+    padding: 10px;
+    height 30px
+    width 100%
+    display flex
+    .btn-box
+      box-shadow: inset 0 0.05rem 5px rgba(0,0,0,.02), inset 0 2px 8px rgba(0,0,0,.15), inset 0 0 0 0.05rem rgba(0,0,0,.1), 0 0.05rem 0.05rem 0 hsla(0,0%,100%,.1);
+      color: #333;
+      margin-left 20px
+      border-radius 20px
+      position: relative;
+      background-color #f5f5f5
+      height 30px
+      width 70%
+      background-color: #fff;
+      display flex
+      .search-btn
+        margin-left 10px
+        width 25px
+        height 25px
+        position relative
+        img
+          margin-top 6px
+      .input-box1
+        height 30px
+        flex 1
+        font-size: 12px
+    .cancel
+      flex 1
+      padding-right 10px
+      height 30px
+      margin-top 7px
+      font-size 15px 
+      text-align: center
+
+// .leave1
+//   animation: leave 0.3s linear
+
+.btn-box input
+  background-color: transparent;
+  border: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  border-radius 20px
+  font-family: sans-serif;
+  outline: none;
+  overflow: visible;
+  line-height: 1.15;
+
+.hot-list
+  overflow-y hidden
+  position relative
+  height 700px
+  width 100%
+  background: #f5f5f5
+  padding-left 20px
+  padding-right 20px
+  z-index 202
+  h4
+    margin-top 20px
+    margin-left 10px
+    color: #8e8e8e;
+    font-weight: 400;
+  .his-btn
+    margin-top 0
+    height 256px
+    margin-bottom 0
+    width 100%
+    padding-left 10px
+    padding-right 10px
+    display flex
+    flex-wrap wrap
+    .history
+      height 40px
+      margin-bottom 10px
+      margin-left 10px
+      margin-top 10px
+      button 
+        height 100%
+        color: #000000
+        font-size 13.5px
+        line-height 1
+        text-align center
+        border-radius 10px
+        background transparent
+
+.perfect
+  height 100%
+  width: 100%
+
+.translate-in-appear {
+  // position: absolute;
+  // transform: translateX(-100%);
+  animation: enter .3s linear
+
+  // &.translate-in-appear-active {
+  //   // position: absolute;
+  //   transform: translateX(0);
+  // }
+}
+
+@keyframes enter{
+    0%{
+      opacity 1
+      transform: translateX(0)
+    }
+    100%{
+      opacity 0
+      transform: translateX(-100%)
+      }
+  } 
+
+// .translate-in-enter {
+//   position: absolute;
+//   transform: translateX(0);
+//   transition: all 500ms linear;
+
+//   &.translate-in-enter-active {
+//     transform: translateX(0);
+//   }
+// }
+
+// // 向左滑出
+.translate-in-leave {
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  // opacity: 1;
+  // transform: translateX(0);
+  // transition: all 500ms linear;
+
+  // &.translate-in-leave-active {
+  //   transform: translateX(-100%);
+  // }
+  animation: leave 0.3s linear
+}
+.translate-exit.translate-exit-active{
+  
+}
+// .translate-exit{
+//   opacity: 1;
+//   transform: scale(1);
+// }
+
+@keyframes leave{
+    0%{
+      opacity 0
+      transform: translateX(-100%)
+    }
+    100%{
+      opacity 1
+      transform: translateX(0)
+      }
+  } 
+
+  

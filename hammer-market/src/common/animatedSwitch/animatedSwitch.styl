@@ -1,0 +1,25 @@
+.route 
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+ 
+// 帧动画
+.fade-enter 
+  translateX(-100%)
+
+ 
+.fade-enter.fade-enter-active 
+  translateX(0)
+  // transition: 1s ease-in;
+
+ 
+.fade-exit 
+  translateX(0)
+
+ 
+.fade-exit.fade-exit-active 
+  translateX(-100%)
+  // transition: translateX(-100%) .3s ease-in;
