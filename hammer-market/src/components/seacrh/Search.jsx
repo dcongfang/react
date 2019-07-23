@@ -4,8 +4,8 @@ import './search.styl'
 class Search extends Component {
   state = {
     history: [],
-    show: false,
-    searchShow: false
+    value: '',
+    show: false
   }
   debounce(fn) {
     let timer = null
@@ -18,37 +18,56 @@ class Search extends Component {
     }
   }
   componentDidMount() {
+    // console.log()
+    if(!JSON.parse(localStorage.getItem('history'))) {
+      this.setState({
+        show: true,
+        history:[]
+      })
+    }else {
     this.setState({
       show: true,
       history: JSON.parse(localStorage.getItem('history'))
     })
-    
   }
-  commitValue = this.debounce((e) => {
-    const history = this.state.history
-    if (e.target.value !== '' && history.indexOf(e.target.value) === -1) {
-      history.push(e.target.value)
-      e.target.value = ''
-    }
-    this.enterValue(history)
-    localStorage.setItem('history', JSON.stringify(history))
-  })
-  enterValue = (history) => {
-    // console.log(e)
+  }
+  commitValue(e) {
     // const history = this.state.history
     // if (e.target.value !== '' && history.indexOf(e.target.value) === -1) {
     //   history.push(e.target.value)
-    // }
-    this.setState({
-      history:history
-    })
+    //   e.target.value = ''
+    // } 
+    // this.enterValue(history)
+    // localStorage.setItem('history', JSON.stringify(history))
+      this.setState({
+        value: e.target.value
+      })
   }
+  // enterValue = (e) => {
+  //   // console.log(e)
+   
+  // }
   backTo = () => {
     this.props.history.goBack()
-    // this.setState({
-    //   show:this.state.show ? false : true
-    // })
   }
+  deleteHis = () => {
+    window.localStorage.removeItem('history')
+    this.setState({
+      history:[]
+    })
+  }
+  onKeyup = (e) => {
+    let history = this.state.history
+    if(e.keyCode === 13) {
+      if (this.state.value !== '' && this.state.history.indexOf(this.state.value) === -1) {
+        history.push(this.state.value)
+      }
+      this.setState({
+        history
+      })
+      localStorage.setItem('history', JSON.stringify(this.state.history))
+    }
+  } 
   render() {
     const { history } = this.state
     // console.log(this.props.searchShow)
@@ -61,12 +80,12 @@ class Search extends Component {
             <div className="form-item">
               <div className="btn-box">
                 <div className="search-btn"><img src={[require('../../assets/images/search.png')]} width="70%" height="70%" alt="" /></div>
-                <input type="text" maxLength={8} onChange={this.commitValue} onSubmit={this.enterValue} placeholder="请输入要搜索的内容" className="input-box1" />
+                <input type="text" maxLength={8} onKeyUp={this.onKeyup} onChange={(e) => this.commitValue(e)} placeholder="请输入要搜索的内容" value={this.state.value} className="input-box1" />
               </div>
               <div className="cancel" onClick={this.backTo}>返回</div>
             </div>
             <div className="hot-list">
-              <h4>历史搜索</h4><div className="deleteHis"><img src={[require('../../assets/images/sc.png')]} width="30px" height="30px" alt=""/></div>
+              <h4>历史搜索</h4><div className="deleteHis" onClick={this.deleteHis}><img src={[require('../../assets/images/sc.png')]} width="30px" height="30px" alt=""/></div>
               <div className="his-btn">
                 {
                   history.map((item, i) => {

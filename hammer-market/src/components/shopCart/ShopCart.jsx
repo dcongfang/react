@@ -148,7 +148,7 @@ class ShopCart extends Component {
             return (
               <div className="cart-item" key={index}>
                 <div className="checkbox-container">
-                  <Checkbox defaultChecked={true} checked={list[index].isChecked} onChange={() => this.selectCheck(index)}></Checkbox>
+                  <Checkbox checked={list[index].isChecked} onChange={() => this.selectCheck(index)}></Checkbox>
                 </div>
                 <div className="item-wrapper">
                   <div className="item-thumb">

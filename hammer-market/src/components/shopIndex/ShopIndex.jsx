@@ -6,6 +6,7 @@ import ShowSort from '../showSort/ShowSort'
 import ListShow from '../listShow/ListShow'
 import Search from '../seacrh/Search'
 import {Route} from 'react-router-dom'
+// import Scroll from '../../common/scroll/Scroll'
 import './shopIndex.styl'
 class ShopIndex extends Component {
   state = {
@@ -87,6 +88,7 @@ class ShopIndex extends Component {
         {/* <Loading title='正在加载...' show={this.state.show}></Loading> */}
         <ListShow></ListShow>
         <div className="white"></div>
+        
         <Route path={`${match.url}/search`} component={Search}></Route>
       </div>
     );
