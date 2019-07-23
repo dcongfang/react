@@ -20,6 +20,7 @@ class Good extends Component {
         spaceBetween : 20,
         pagination: {
           el: '.swiper-pagination',
+          bulletActiveClass: 'my-bullet-active',
         }
       });
     }

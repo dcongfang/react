@@ -1,7 +1,7 @@
-const initState = JSON.parse(localStorage.getItem('cartList')) || []
+// const initState = JSON.parse(localStorage.getItem('cartList')) || []
 // window.localStorage.removeItem('cartList')
 
-function addToCart(state = initState, action) {
+function addToCart(state = [], action) {
   switch (action.type) {
     case 'ADD_CART':
       let copyState = [...state.splice(0), action.good]
@@ -43,7 +43,7 @@ function addToCart(state = initState, action) {
       // }
       // let newArr = arr.filter((item) => item.id = action.id)
       let newState = copyState
-      localStorage.setItem('cartList', JSON.stringify(newState))
+      // localStorage.setItem('cartList', JSON.stringify(newState))
       return newState
     default:
       return state

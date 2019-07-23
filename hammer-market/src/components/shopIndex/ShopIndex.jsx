@@ -9,9 +9,10 @@ import {Route} from 'react-router-dom'
 import './shopIndex.styl'
 class ShopIndex extends Component {
   state = {
-    slideList: ['https://resource.smartisan.com/resource/l/lou1.png?x-oss-process=image/format,jpg/quality,Q_100',
-      'https://resource.smartisan.com/resource/w/web244011081.png?x-oss-process=image/format,jpg/quality,Q_100',
-      'https://resource.smartisan.com/resource/c/chujiaquanwebshoujiao244011081.png?x-oss-process=image/format,jpg/quality,Q_100'
+    slideList: ['https://resource.smartisan.com/resource/fda5c3e61a71c0f883bbd6c76516cd85.png',
+      'https://resource.smartisan.com/resource/a/app1008420.png',
+      'https://resource.smartisan.com/resource/c1cf16d2c7a96f43e4e94cf96568c36a.png',
+      'https://resource.smartisan.com/resource/75f29073a66cf866d34ad09a405e4ddf.png'
     ],
     show: true,
     open: false
@@ -28,6 +29,7 @@ class ShopIndex extends Component {
       spaceBetween : 20,
       pagination: {
         el: '.swiper-pagination',
+        bulletActiveClass: 'my-bullet-active',
       }
     });
   }
@@ -45,7 +47,7 @@ class ShopIndex extends Component {
   render() {
     const {slideList, goods} = this.state
     const { match } = this.props
-    // console.log(`${match.url}/search`)
+    // console.log(list.length)
     return (
       <div>
         {/* 头部 */}
@@ -74,11 +76,14 @@ class ShopIndex extends Component {
           <div className="swiper-slide">
             <img src={slideList[2]} width="100%" height="100%" alt=""/>
           </div>
+          <div className="swiper-slide">
+            <img src={slideList[3]} width="100%" height="100%" alt=""/>
+          </div>
         </div>
         <div className='swiper-pagination'></div>
         </div>
         <div className="bg-color"></div>
-        <BestSellers goods={goods} match={match} history={this.props.history}></BestSellers>
+          <BestSellers goods={goods} match={match} history={this.props.history}></BestSellers>
         {/* <Loading title='正在加载...' show={this.state.show}></Loading> */}
         <ListShow></ListShow>
         <div className="white"></div>

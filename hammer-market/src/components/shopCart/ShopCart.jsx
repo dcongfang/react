@@ -7,13 +7,17 @@ class ShopCart extends Component {
     totalPrice: 0,
     num: 0,
     list: [],
-    allChecked: false
+    allChecked: false,
+    status: true,
+    bgcolor: false
    }
    componentWillMount() { 
     let lists = this.uniq(this.props.list)
       this.setState({
       list: lists
       })
+      localStorage.setItem('carts', JSON.stringify(lists))
+      // window.localStorage.removeItem('carts')
   }
   computedTotalPrice = () => {
     let num = 0
@@ -82,6 +86,34 @@ class ShopCart extends Component {
     }
     return arr
   }
+  handleStatus = () => {
+    let list = this.state.list
+    list.map((el) => {
+      el.isChecked = false
+      return el
+    })
+    this.setState({
+      list: list,
+      allChecked: false,
+      num: 0,
+      status: !this.state.status
+    })
+  }
+  deleteItem = () => {
+    let list = this.state.list
+    // if (list.some((el) => el.isChecked===true)) {
+    //   this.setState({
+    //     bgcolor:true
+    //   })
+    // }
+    for(let i=0,len = list.length;i<len;i++){
+      if(list[i].isChecked) {
+        list.splice(i,1)
+      }
+      return list
+    }
+    
+  }
   renderGoodList = () => {
     if (this.props.list.length=== 0) {
       return (
@@ -100,15 +132,17 @@ class ShopCart extends Component {
       const {list} = this.state
       return (
         <>
-          <div className="receive-coupon">
+          {
+            this.state.status?<div className="receive-coupon">
             <div className="label">
               点击获取优惠券
             </div>
             <div className="right">
               >
             </div>
-          </div>
-          <div className="item-margin">
+          </div>:''
+          }
+          <div className={`item-margin ${this.state.status?'':'up'}`}>
         {
           list.map((item, index) => {
             return (
@@ -146,7 +180,8 @@ class ShopCart extends Component {
               </div>
               <p>已选<span>{this.state.num}</span>件</p>
             </div>
-            <div className="sum-info">
+            {
+              this.state.status?<div className="sum-info">
               <div className="totalPrice">
                 <p>合计:</p> 
                 <span>￥ {this.state.totalPrice}</span>
@@ -154,9 +189,12 @@ class ShopCart extends Component {
               <div className="desc">
                 应付总额不含运费
               </div>
-            </div>
+            </div>:''
+            }
             <div className={list.find((el) => el.isChecked===true)? 'btn-disabled1':'btn-disabled'}>
-              <button>现在结算</button>
+              {
+                this.state.status?<button>现在结算</button>:<button className={this.state.bgcolor?'bgc':''} onClick={this.deleteItem}>删除所选</button>
+              }
             </div>
           </div>
         </>
@@ -168,7 +206,7 @@ class ShopCart extends Component {
       <div>
         <div className="title-bar">
           <div className="nav-title">购物车</div>
-          <div className="nav-edit">编辑</div>
+          <div className="nav-edit" onClick={this.handleStatus}>{this.state.status?'编辑':'完成'}</div>
         </div>
         {this.renderGoodList()}
       </div>

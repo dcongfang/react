@@ -45,6 +45,7 @@
 
 // .leave1
 //   animation: leave 0.3s linear
+  
 
 .btn-box input
   background-color: transparent;
@@ -87,10 +88,10 @@
       margin-left 10px
       margin-top 10px
       button 
-        height 100%
-        color: #000000
+        height: 30px;
+        border: 1px solid green;
+        color: #d55d5d;
         font-size 13.5px
-        line-height 1
         text-align center
         border-radius 10px
         background transparent
@@ -99,27 +100,28 @@
   height 100%
   width: 100%
 
-.translate-in-appear {
+// .translate-in-appear {
   // position: absolute;
   // transform: translateX(-100%);
-  animation: enter .3s linear
+  // animation: enter .3s linear
 
   // &.translate-in-appear-active {
   //   // position: absolute;
   //   transform: translateX(0);
   // }
-}
+// }
 
-@keyframes enter{
-    0%{
-      opacity 1
-      transform: translateX(0)
-    }
-    100%{
-      opacity 0
-      transform: translateX(-100%)
-      }
-  } 
+
+// @keyframes enter{
+//     0%{
+//       opacity 1
+//       transform: translateX(0)
+//     }
+//     100%{
+//       opacity 0
+//       transform: translateX(-100%)
+//       }
+//   } 
 
 // .translate-in-enter {
 //   position: absolute;
@@ -133,35 +135,38 @@
 
 // // 向左滑出
 .translate-in-leave {
-  // position: absolute;
-  // left: 0;
-  // top: 0;
-  // opacity: 1;
-  // transform: translateX(0);
-  // transition: all 500ms linear;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 500ms linear;
 
-  // &.translate-in-leave-active {
-  //   transform: translateX(-100%);
-  // }
-  animation: leave 0.3s linear
+  &.translate-in-leave-active {
+    transform: translateX(-100%);
+  }
 }
 .translate-exit.translate-exit-active{
   
 }
-// .translate-exit{
-//   opacity: 1;
-//   transform: scale(1);
-// }
+.translate-exit{
+  opacity: 1;
+  transform: scale(1);
+}
 
-@keyframes leave{
-    0%{
-      opacity 0
-      transform: translateX(-100%)
-    }
-    100%{
-      opacity 1
-      transform: translateX(0)
-      }
-  } 
+.deleteHis
+  position absolute
+  margin-left: 290px;
+  margin-top: -40px;
+// @keyframes leave{
+//     0%{
+//       opacity 0
+//       transform: translateX(0)
+//     }
+//     100%{
+//       opacity 0
+//       transform: translateX(-200%)
+//       }
+//   } 
 
   
