@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import {Icon, Toast} from 'antd-mobile'
 import Swiper from 'swiper/dist/js/swiper.js'
+import Scroll from '../../common/scroll/Scroll'
 import './good.styl'
 class Good extends Component {
   state = {
@@ -74,6 +75,8 @@ class Good extends Component {
           <div className='swiper-pagination'></div>
         </div>
         <div className="bg-color"></div>
+        <Scroll>
+        <Fragment>
         <div className="item-titlebox">
           <div className="title-content">
             <h4>{good.title}</h4>
@@ -111,7 +114,10 @@ class Good extends Component {
         <div className="btn">
           <button className="btn2">现在购买</button>
         </div>
+     
       </div>
+      </Fragment>
+      </Scroll>
       </div>
      );
   }

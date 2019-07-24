@@ -5,15 +5,15 @@ const mapStateToProps =(state)=>{
     list: state
   }
 }
-// const mapDispatchToProps = (dispatch)=>{
-//   return {
-//     addToGoods: (good) => {
-//       dispatch({
-//         type:'ADD_CART',
-//         good
-//       });
-//     }
-//   }
-// }
+const mapDispatchToProps = (dispatch)=>{
+  return {
+    deleteGoods: (arr) => {
+      dispatch({
+        type:'DELETE_CART',
+        item: arr
+      });
+    }
+  }
+}
 
-export default connect(mapStateToProps)(ShopCart)
+export default connect(mapStateToProps, mapDispatchToProps)(ShopCart)

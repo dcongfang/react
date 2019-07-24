@@ -16,8 +16,13 @@ class ShopCart extends Component {
       this.setState({
       list: lists
       })
-      localStorage.setItem('carts', JSON.stringify(lists))
+      // localStorage.setItem('carts', JSON.stringify(lists))
       // window.localStorage.removeItem('carts')
+  }
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    };
   }
   computedTotalPrice = () => {
     let num = 0
@@ -100,19 +105,26 @@ class ShopCart extends Component {
     })
   }
   deleteItem = () => {
+    //  = []
     let list = this.state.list
-    // if (list.some((el) => el.isChecked===true)) {
-    //   this.setState({
-    //     bgcolor:true
-    //   })
+    // for(let i=0;i<list.length;i++) {
+    //   if(list[i].isChecked === true) {
+    //     // let id = 
+    //     arr.push(list[i].id)
+    //   }
     // }
-    for(let i=0,len = list.length;i<len;i++){
-      if(list[i].isChecked) {
-        list.splice(i,1)
+    let arr = list.filter((el) => {
+      if(!el.isChecked){
+        return el
       }
-      return list
-    }
-    
+    })
+    this.setState({
+      list:arr,
+      totalPrice: 0
+    })
+    // console.log(arr)
+    return this.props.deleteGoods(arr)
+
   }
   renderGoodList = () => {
     if (this.props.list.length=== 0) {
@@ -193,7 +205,7 @@ class ShopCart extends Component {
             }
             <div className={list.find((el) => el.isChecked===true)? 'btn-disabled1':'btn-disabled'}>
               {
-                this.state.status?<button>现在结算</button>:<button className={this.state.bgcolor?'bgc':''} onClick={this.deleteItem}>删除所选</button>
+                this.state.status?<button>现在结算</button>:<button onClick={() => this.deleteItem()}>删除所选</button>
               }
             </div>
           </div>
