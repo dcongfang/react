@@ -114,9 +114,7 @@ class ShopCart extends Component {
     //   }
     // }
     let arr = list.filter((el) => {
-      if(!el.isChecked){
-        return el
-      }
+      return el.isChecked === false
     })
     this.setState({
       list:arr,

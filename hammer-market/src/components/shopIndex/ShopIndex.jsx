@@ -56,13 +56,13 @@ class ShopIndex extends Component {
         <ShowSort open={this.state.open}></ShowSort>
         <div className="header">
           <div className="icon-font" onClick={this.handleChange}>  
-            <img src={[require("../../assets/images/sort.png")]} width="20px" height="20px" alt="" />
+            <img src={[require("../../assets/images/st.png")]} width="20px" height="20px" alt="" />
           </div>
           <div className="icon-font1">
-            <img src={[require("../../assets/images/chuiz.png")]} width="30px" height="30px" alt="" />
+            <img src={[require("../../assets/images/czi.png")]} width="30px" height="30px" alt="" />
           </div>
             <div className="icon-font2" onClick={this.handleToSearch}>
-              <img src={[require("../../assets/images/search.png")]} width="30px" height="30px" alt="" />
+              <img src={[require("../../assets/images/ss.png")]} width="30px" height="30px" alt="" />
             </div>
         </div>
         {/* 轮播 */}
