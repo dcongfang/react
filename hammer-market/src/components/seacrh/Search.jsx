@@ -32,21 +32,10 @@ class Search extends Component {
   }
   }
   commitValue(e) {
-    // const history = this.state.history
-    // if (e.target.value !== '' && history.indexOf(e.target.value) === -1) {
-    //   history.push(e.target.value)
-    //   e.target.value = ''
-    // } 
-    // this.enterValue(history)
-    // localStorage.setItem('history', JSON.stringify(history))
       this.setState({
         value: e.target.value
       })
   }
-  // enterValue = (e) => {
-  //   // console.log(e)
-   
-  // }
   backTo = () => {
     this.props.history.goBack()
   }
@@ -70,8 +59,6 @@ class Search extends Component {
   } 
   render() {
     const { history } = this.state
-    // console.log(this.props.searchShow)
-    // console.log(history) 
     return (
       <CSSTransition in={this.state.show} timeout={300}
         classNames="translate">

@@ -43,11 +43,6 @@ class ShopCart extends Component {
   selectCheck = (index) => {
     let list = this.state.list
     list[index].isChecked = !list[index].isChecked
-    // if(list.find((el) => el.isChecked = true)){
-    //   this.setState({
-    //     bgcolor: 'blue'
-    //   })
-    // }
     let allChecked = true;
     for(let i = 0;i < list.length;i++) {
       if(!list[i].isChecked) {
@@ -91,6 +86,11 @@ class ShopCart extends Component {
     }
     return arr
   }
+  handleGetCard = (nextProps) => {
+    this.setState({
+      list:nextProps
+    })
+  }
   handleStatus = () => {
     let list = this.state.list
     list.map((el) => {
@@ -105,14 +105,7 @@ class ShopCart extends Component {
     })
   }
   deleteItem = () => {
-    //  = []
     let list = this.state.list
-    // for(let i=0;i<list.length;i++) {
-    //   if(list[i].isChecked === true) {
-    //     // let id = 
-    //     arr.push(list[i].id)
-    //   }
-    // }
     let arr = list.filter((el) => {
       return el.isChecked === false
     })
